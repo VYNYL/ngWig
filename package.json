@@ -48,7 +48,7 @@
   "dependencies": {
     "angular": "1.6.0"
   },
-  "main": "dist/ng-wig.min.js",
+  "main": "dist/ng-wig.js",
   "repository": {
     "type": "git",
     "git": "https://github.com/stevermeister/ngWig.git"
