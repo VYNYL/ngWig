@@ -68,7 +68,7 @@ angular.module('ngWig').component('ngWig', {
       if (command === 'createlink' && selection === '') {
         $document[0].execCommand('insertHtml', false, '<a href="' + options + '" target="_blank">' + options + '</a>');
       } else {
-        $document[0].execCommand(command, false, options);
+        $document[0].execCommand('insertHtml', false, '<a href="' + options + '" target="_blank">' + selection + '</a>');
       }
 
       _this.afterExecCommand({ command: command, options: options });
