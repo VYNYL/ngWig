@@ -61,6 +61,13 @@ angular.module('ngWig').component('ngWig', {
         }
       }
 
+      if (command === 'createVideoLink') {
+        options = $window.prompt('Please enter the URL of the video, ex: https://www.youtube.com/watch?v=xxxxxxxx', 'https://');
+        if (!options) {
+          return;
+        }
+      }
+
       _this.beforeExecCommand({ command: command, options: options });
 
       // use insertHtml for `createlink` command to account for IE/Edge purposes, in case there is no selection
@@ -69,6 +76,20 @@ angular.module('ngWig').component('ngWig', {
         $document[0].execCommand('insertHtml', false, '<a href="' + options + '" target="_blank">' + options + '</a>');
       } else {
         $document[0].execCommand('insertHtml', false, '<a href="' + options + '" target="_blank">' + selection + '</a>');
+      }
+
+
+      // YOUTUBE EMBED
+      if (command === 'createVideoLink' && selection === '') {
+        $document[0].execCommand('insertHtml', false, `<iframe width="560" height="315" src="${options}" frameborder="0"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>`);
+      } else {
+        $document[0].execCommand('insertHtml', false, `<iframe width="560" height="315" src="${options}" frameborder="0"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>`);
       }
 
       _this.afterExecCommand({ command: command, options: options });
@@ -164,10 +185,11 @@ angular.module('ngWig').provider('ngWigToolbar', function () {
     list2: { title: 'Ordered List', command: 'insertorderedlist', styleClass: 'list-ol' },
     bold: { title: 'Bold', command: 'bold', styleClass: 'bold' },
     italic: { title: 'Italic', command: 'italic', styleClass: 'italic' },
-    link: { title: 'Link', command: 'createlink', styleClass: 'link' }
+    link: { title: 'Link', command: 'createlink', styleClass: 'link' },
+    video: { title: 'Video', command: 'createVideoLink', styleClass: 'video' }
   };
 
-  var defaultButtonsList = ['list1', 'list2', 'bold', 'italic', 'link'];
+  var defaultButtonsList = ['list1', 'list2', 'bold', 'italic', 'link', 'video'];
 
   var isButtonActive = function isButtonActive() {
     return !!this.command && document.queryCommandState(this.command);
