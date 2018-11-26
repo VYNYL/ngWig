@@ -10,6 +10,6 @@ angular.module('myapp', ['ngWig']).run(($rootScope, $q, $timeout) => {
     return $q.when(pasteContent.slice(0, 30));
   };
 }).config(['ngWigToolbarProvider', function(ngWigToolbarProvider) {
-  ngWigToolbarProvider.setButtons(['formats', 'list1', 'list2', 'bold', 'italic', 'link']);
+  ngWigToolbarProvider.setButtons(['formats', 'list1', 'list2', 'bold', 'italic', 'link', 'video']);
   ngWigToolbarProvider.addStandardButton('underline', 'Underline', 'underline', 'fa-underline');
 }]);
