@@ -81,15 +81,9 @@ angular.module('ngWig').component('ngWig', {
 
       // YOUTUBE EMBED
       if (command === 'createVideoLink' && selection === '') {
-        $document[0].execCommand('insertHtml', false, `<iframe width="560" height="315" src="${options}" frameborder="0"
-          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen>
-        </iframe>`);
+        $document[0].execCommand('insertHtml', false, '<iframe width="560" height="315" src=" ' + options + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
       } else {
-        $document[0].execCommand('insertHtml', false, `<iframe width="560" height="315" src="${options}" frameborder="0"
-          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen>
-        </iframe>`);
+        $document[0].execCommand('insertHtml', false, '<iframe width="560" height="315" src=" ' + options + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
       }
 
       _this.afterExecCommand({ command: command, options: options });
