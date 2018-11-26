@@ -61,7 +61,7 @@ angular.module('ngWig').component('ngWig', {
         }
       }
 
-      if (command === 'createVideoLink') {
+      if (command === 'createvideo') {
         options = $window.prompt('Please enter the URL of the video, ex: https://www.youtube.com/watch?v=xxxxxxxx', 'https://');
         if (!options) {
           return;
@@ -80,7 +80,7 @@ angular.module('ngWig').component('ngWig', {
 
 
       // YOUTUBE EMBED
-      if (command === 'createVideoLink' && selection === '') {
+      if (command === 'createvideo' && selection === '') {
         $document[0].execCommand('insertHtml', false, '<iframe width="560" height="315" src=" ' + options + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
       } else {
         $document[0].execCommand('insertHtml', false, '<iframe width="560" height="315" src=" ' + options + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
@@ -180,7 +180,7 @@ angular.module('ngWig').provider('ngWigToolbar', function () {
     bold: { title: 'Bold', command: 'bold', styleClass: 'bold' },
     italic: { title: 'Italic', command: 'italic', styleClass: 'italic' },
     link: { title: 'Link', command: 'createlink', styleClass: 'link' },
-    video: { title: 'Video', command: 'createVideoLink', styleClass: 'video' }
+    video: { title: 'Video', command: 'createvideo', styleClass: 'video' },
   };
 
   var defaultButtonsList = ['list1', 'list2', 'bold', 'italic', 'link', 'video'];
