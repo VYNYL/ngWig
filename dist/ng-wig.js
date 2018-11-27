@@ -74,12 +74,11 @@ angular.module('ngWig').component('ngWig', {
         $document[0].execCommand('insertHtml', false, '<a href="' + options + '" target="_blank">' + selection + '</a>');
       }
 
-
       // YOUTUBE EMBED
       if (command === 'createvideo' && selection === '') {
-        $document[0].execCommand('insertHtml', false, '<iframe width="560" height="315" src=" ' + options + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
+        $document[0].execCommand('insertHtml', false, '<br><iframe width="400" height="275" src=" ' + options + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br/><br/>');
       } else {
-        $document[0].execCommand('insertHtml', false, '<iframe width="560" height="315" src=" ' + options + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
+        $document[0].execCommand('insertHtml', false, '<br><iframe width="400" height="275" src=" ' + options + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br/><br/>');
       }
 
       _this.afterExecCommand({ command: command, options: options });
@@ -176,7 +175,7 @@ angular.module('ngWig').provider('ngWigToolbar', function () {
     bold: { title: 'Bold', command: 'bold', styleClass: 'bold' },
     italic: { title: 'Italic', command: 'italic', styleClass: 'italic' },
     link: { title: 'Link', command: 'createlink', styleClass: 'link' },
-    video: { title: 'Video', command: 'createvideo', styleClass: 'video' },
+    video: { title: 'Video', command: 'createvideo', styleClass: 'fa-youtube' },
   };
 
   var defaultButtonsList = ['list1', 'list2', 'bold', 'italic', 'link', 'video'];

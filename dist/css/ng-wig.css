@@ -201,8 +201,8 @@
   content: '\f0c1';
 }
 
-.nw-button.video:before {
-  content: '\f03d';
+.nw-button.youtube:before {
+  content: '\f167';
 }
 
 .nw-button.font-color:before {
