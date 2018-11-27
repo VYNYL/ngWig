@@ -50,10 +50,6 @@ angular.module('ngWig').component('ngWig', {
     this.execCommand = function (command, options) {
       if (_this.editMode) return false;
 
-      if ($document[0].queryCommandSupported && !$document[0].queryCommandSupported(command)) {
-        throw 'The command "' + command + '" is not supported';
-      }
-
       if (command === 'createlink' || command === 'insertImage') {
         options = $window.prompt('Please enter the URL', 'http://');
         if (!options) {
@@ -62,7 +58,7 @@ angular.module('ngWig').component('ngWig', {
       }
 
       if (command === 'createvideo') {
-        options = $window.prompt('Please enter the URL of the video, ex: https://www.youtube.com/watch?v=xxxxxxxx', 'https://');
+        options = $window.prompt('Please enter the URL of the video, ex: https://www.youtube.com/embed/xxxxxxxx', 'https://');
         if (!options) {
           return;
         }
