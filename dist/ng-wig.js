@@ -76,7 +76,7 @@ angular.module('ngWig').component('ngWig', {
 
       // YOUTUBE EMBED
       if (command === 'createvideo' && selection === '') {
-        $document[0].execCommand('insertHtml', false, '<br><iframe width="400" height="275" src=" ' + options + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br/><br/>');
+        $document[0].execCommand('insertHtml', false, '<br><iframe style="display: inline-flex" width="400" height="275" src=" ' + options + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br/><br/>');
       } else {
         $document[0].execCommand('insertHtml', false, '<br><iframe width="400" height="275" src=" ' + options + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br/><br/>');
       }
