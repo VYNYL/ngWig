@@ -205,6 +205,10 @@
   content: '\f167';
 }
 
+.nw-button.vimeo:before {
+  content: '\f167';
+}
+
 .nw-button.font-color:before {
   content: '\f031';
 }

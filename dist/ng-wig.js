@@ -57,12 +57,24 @@ angular.module('ngWig').component('ngWig', {
         }
       }
 
-      if (command === 'createvideo') {
-        options = $window.prompt('Please enter the URL of the video, ex: https://www.youtube.com/embed/xxxxxxxx', 'https://');
+      if (command === 'createYoutubeVideo') {
+        options = $window.prompt('Please enter the Alphanumeric code of the video at the end of the video url, ex: youtube.com/watch?v=XXXXXX', 'https://www.youtube.com/embed/');
         if (!options) {
           return;
+        } else {
+          $document[0].execCommand('insertHtml', false, '<br><iframe class="embed" src=" ' + options + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br/><br/>');
         }
       }
+
+    if (command === 'createVimeoVideo') {
+      options = $window.prompt('Please enter the Alphanumeric code of the video at the end of the video url, ex: https://vimeo.com/XXXXXX', 'https://player.vimeo.com/video/');
+      if (!options) {
+        return;
+      } else {
+        $document[0].execCommand('insertHtml', false, '<br><iframe class="embed" src=" ' + options + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br/><br/>');
+      }
+    }
+
 
       _this.beforeExecCommand({ command: command, options: options });
 
@@ -74,12 +86,6 @@ angular.module('ngWig').component('ngWig', {
         $document[0].execCommand('insertHtml', false, '<a href="' + options + '" target="_blank">' + selection + '</a>');
       }
 
-      // YOUTUBE EMBED
-      if (command === 'createvideo' && selection === '') {
-        $document[0].execCommand('insertHtml', false, '<br><iframe class="embed" src=" ' + options + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br/><br/>');
-      } else {
-        $document[0].execCommand('insertHtml', false, '<br><iframe class="embed" src=" ' + options + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br/><br/>');
-      }
 
       _this.afterExecCommand({ command: command, options: options });
 
@@ -175,10 +181,11 @@ angular.module('ngWig').provider('ngWigToolbar', function () {
     bold: { title: 'Bold', command: 'bold', styleClass: 'bold' },
     italic: { title: 'Italic', command: 'italic', styleClass: 'italic' },
     link: { title: 'Link', command: 'createlink', styleClass: 'link' },
-    video: { title: 'Video', command: 'createvideo', styleClass: 'fa-youtube' },
+    youtube: { title: 'Youtube', command: 'createYoutubeVideo', styleClass: 'fa-youtube' },
+    vimeo: { title: 'Vimeo', command: 'createVimeoVideo', styleClass: 'fa-vimeo' }
   };
 
-  var defaultButtonsList = ['list1', 'list2', 'bold', 'italic', 'link', 'video'];
+  var defaultButtonsList = ['list1', 'list2', 'bold', 'italic', 'link', 'youtube', 'vimeo'];
 
   var isButtonActive = function isButtonActive() {
     return !!this.command && document.queryCommandState(this.command);
