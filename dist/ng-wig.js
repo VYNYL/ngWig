@@ -57,23 +57,23 @@ angular.module('ngWig').component('ngWig', {
         }
       }
 
-      if (command === 'createYoutubeVideo') {
-        options = $window.prompt('Please enter the Alphanumeric code of the video at the end of the video url, ex: youtube.com/watch?v=XXXXXX', 'https://www.youtube.com/embed/');
-        if (!options) {
-          return;
-        } else {
-          $document[0].execCommand('insertHtml', false, '<br><iframe class="embed" src=" ' + options + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br/><br/>');
-        }
-      }
-
-    if (command === 'createVimeoVideo') {
-      options = $window.prompt('Please enter the Alphanumeric code of the video at the end of the video url, ex: https://vimeo.com/XXXXXX', 'https://player.vimeo.com/video/');
-      if (!options) {
-        return;
-      } else {
-        $document[0].execCommand('insertHtml', false, '<br><iframe class="embed" src=" ' + options + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br/><br/>');
-      }
-    }
+      // if (command === 'createYoutubeVideo') {
+      //   options = $window.prompt('Please enter the Alphanumeric code of the video at the end of the video url, ex: youtube.com/watch?v=XXXXXX', 'https://www.youtube.com/embed/');
+      //   if (!options) {
+      //     return;
+      //   } else {
+      //     $document[0].execCommand('insertHtml', false, '<br><iframe class="embed" src=" ' + options + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br/><br/>');
+      //   }
+      // }
+      //
+      // if (command === 'createVimeoVideo') {
+      //   options = $window.prompt('Please enter the Alphanumeric code of the video at the end of the video url, ex: https://vimeo.com/XXXXXX', 'https://player.vimeo.com/video/');
+      //   if (!options) {
+      //     return;
+      //   } else {
+      //     $document[0].execCommand('insertHtml', false, '<br><iframe class="embed" src=" ' + options + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br/><br/>');
+      //   }
+      // }
 
 
       _this.beforeExecCommand({ command: command, options: options });
